@@ -1,0 +1,249 @@
+\documentclass[11pt]{report}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}{}
+
+\textbf{54} \textit{The accompanying figure shows the torus that is generated
+by revolving the circle}
+\[
+    (x - a)^2 + z^2 = b^2; (0 < b < a)
+\]
+
+\textit{in the xz-plane about the z-axis.}
+
+\begin{itemize}
+    \item \textit{Show that this torus can be expressed parametrically as}
+    \[
+        x = (a + b \cos v) \cos u
+    \]
+    \[
+        y = (a + b \cos v) \sin u
+    \]
+    \[
+        z = b \sin v
+    \]
+    \textit{where u and v are the parameters shown in the figure
+        and} \( 0 \leq u \leq 2 \pi, 0 \leq v \leq 2\pi \)
+    \item Use a graphing utility to generate a torus.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{torus.png}
+\end{figure}
+
+Sabeemos que la ecuación del toro es:
+\[
+    (x - a)^2 + z^2 = b^2; (0 < b < a)
+\]
+
+Entonces, si consideramos que la parametrización de $z$ para formar un círculo
+es \(z = b \sin{v}, 0 \leq v \leq 2 \pi \), entonces:
+
+\begin{equation*}
+\begin{split}
+    (x - a)^2 + b^2 \sin{v}^2 = b^2 \\
+    (x - a)^2 = b^2  - b^2 \sin{v}^2 \\
+    (x - a)^2 = b^2 \left( 1 - \sin{v}^2 \right) \\
+    (x - a)^2 = b^2 \left( \cos{v}^2 \right) \\
+    x - a = b \cos{v} \\
+    x = b \cos{v} + a\\
+\end{split}
+\end{equation*}
+
+Además, como el círculo rota al rededor del eje $y$, entonces:
+
+\[
+    x = x \cos{u}
+\]
+\[
+    y = x \sin{u}
+\]
+
+Entonces por la igualdad de \(x = b \cos{v} + a\) y por como tomamos a \(z\):
+
+\begin{equation*}
+\begin{split}
+    x = x \cos{u} &= (a + b \cos{v}) \cos{u} \\
+    y = x \sin{u} &= (a + b \cos{v}) \sin{u} \\
+    z &= b \sin{v}
+\end{split}
+\end{equation*}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{torus_sol.png}
+\end{figure}
+
+
+\newpage
+
+\textbf{37} \\
+
+$\iint \limits_{R} \frac{\sin{x - y}}{\cos{x + y}} \, dA$ \textit{where R is the
+triangular region enclosed by the lines} \( y = 0, y = x, x + y = \frac{\pi}{4}\)
+
+Analizando la región \(R\):
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{14_7_37.png}
+\end{figure}
+
+\[
+    R = \{ x, y | 0 \leq x \leq \frac{\pi}{8}, x \leq y \leq \frac{\pi}{4} - x \}
+\]
+
+Notemos que contamos con las funciones:
+
+\[
+    y = x
+\]
+\[
+    x + y = \frac{\pi}{4}
+\]
+
+Haciendo ambas iguales a algo constante:
+\[
+    y - x = 0
+\]
+\[
+    x + y = \frac{\pi}{4}
+\]
+
+Entonces si tomamos las funciones \( u = u(x, y), v = v(x, y) \):
+
+\[
+    u = x + y
+\]
+\[
+    v = y - x
+\]
+
+Entonces obtenemos una nueva región \(S\), tal que:
+
+\[
+    S = \{x,y | 0 \leq u \leq \frac{\pi}{4}, 0 \leq v \leq u \}
+\]
+
+Sumando:
+
+\[
+    u + v = (x + y) + (y - x) = y + y + x - x = 2y \rightarrow y = \frac{1}{2}(u + v) = \frac{1}{2} u + \frac{1}{2} v
+\]
+
+Restando:
+
+\[
+    u - v = (x + y) - (y - x) = x + y - y + x = 2x \rightarrow x = \frac{1}{2}(u - v) = \frac{1}{2} u - \frac{1}{2} v
+\]
+
+Entonces buscando el Jacobiano:
+
+\begin{equation*}
+\begin{split}
+    \frac{\partial(x, y)}{\partial(u, v)}
+    &= \left|
+        \begin{matrix}
+            \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \\
+            \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \\
+        \end{matrix}
+     \right| \\
+     &= \left|
+         \begin{matrix}
+             \frac{1}{2} & -\frac{1}{2} \\ \\
+             \frac{1}{2} & \frac{1}{2} \\
+         \end{matrix}
+      \right| \\
+     &= \frac{1}{4} - \left( -\frac{1}{4} \right) \\
+     &= \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
+\end{split}
+\end{equation*}
+
+Entonces, cambiando la integral:
+
+\begin{equation*}
+\begin{split}
+    \iint \limits_{R} \frac{\sin{(x - y)}}{\cos{(x + y)}} \, dA
+    &= \iint \limits_{S} \frac{\sin{(-v)}}{\cos{(u)}} \frac{\partial(x, y)}{\partial(u, v)} \, dA \\
+    &= \frac{1}{2} \iint \limits_{S} \frac{\sin{(-v)}}{\cos{(u)}}  \, dA \\
+    &= -\frac{1}{2} \int \limits_{0}^{\frac{\pi}{4}} \int \limits_{0}^{u} \frac{\sin{(v)}}{\cos{(u)}}  \, dv \, du \\
+    &= \frac{1}{2} \int \limits_{0}^{\frac{\pi}{4}} \left[ \frac{\cos{(v)}}{\cos{(u)}} \right] \Big |_{0}^{u} \, du \\
+    &= \frac{1}{2} \int \limits_{0}^{\frac{\pi}{4}} \left( 1 - \frac{1}{\cos{(u)}} \right) \, du \\
+    &= \frac{1}{2} \left[ \frac{\pi}{4} - \int \limits_{0}^{\frac{\pi}{4}} \sec{u} \right] \, du \\
+    &= \frac{1}{2} \left[ \frac{\pi}{4} - \ln \left| \sec u + \tan u \right| \Big |_0^{\frac{\pi}{4}} \right]  \\
+    &= \frac{1}{2} \left[ \frac{\pi}{4}
+        - \ln \left| \sec \left( \frac{\pi}{4} \right) + \tan \left( \frac{\pi}{4} \right) \right|
+        + \ln \left| \sec \left( 0 \right) + \tan \left( 0 \right) \right| \right] \\
+    &= \frac{1}{2} \left[ \frac{\pi}{4}
+        - \ln \left| \sec \left( \frac{\pi}{4} \right) + \tan \left( \frac{\pi}{4} \right) \right| \right] \\
+\end{split}
+\end{equation*}
+
+\newpage
+
+\textbf{16} The joint density function for $x, y$ is given by
+
+\[
+    f(x, y) =
+    \begin{cases}
+        kxy, $ for $ 0 \leq x \leq y \leq 1 \\
+        0, $ otherwise $
+    \end{cases}
+\]
+
+
+\textbf{a)} Determine the value of $k$.
+
+Tomemos en cuenta que en una función de densidad conjunta
+\[ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) dxdy = 1\]
+Por lo tanto
+\[ \int_{0}^{1} \int_{x}^{1} kxy dxdy = 1\]
+de donde
+\[\frac{1}{8} k = 1 \]
+y llegamos a que
+\[ k = 8 \]
+
+
+\textbf{b)} Find the probability that $(x, y)$ lies in the shaded region in Figure 16.57.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{16.jpeg}
+\end{figure}
+
+
+La probabilidad es
+\[ \int_{0}^{1} \int_{x}^{\sqrt{x}} 8xy dxdy = \int_{0}^{1} 4x(y^2) \bigm|_x^{\sqrt{x}} dx \]
+\[ = \int_{0}^{1} 4x(x - x^2) dx\]
+\[ = 4 \left(\frac{1}{3} x^3 - \frac{1}{4} x^4 \right) \bigm|_0^1 \]
+\[ = 4 \left(\frac{1}{3} - \frac{1}{4} \right)	\]
+\[ = \frac{1}{3} \]
+
+\newpage
+
+\textbf{23.} If $p_1 (x, y)$ and $p_2 (x, y)$ are joint density functions, then $p_1 (x, y) + p_2 (x, y)$ is a joint density function. \\
+
+En caso de tener $p_1$ y $p_2$ de la siguiente manera:
+\[ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} p_1 (x,y) dxdy\]
+\[ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} p_2 (x,y) dxdy\]
+Y que ambos sean igual a 1, al sumarlos
+\[ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \left[p_1 (x,y) + p_2 (x,y) \right] dxdy =\]
+\[\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} p_1 (x,y) dxdy + \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} p_2 (x,y) dxdy  \]
+\[ = 1 + 1\]
+\[ = 2 \]
+Lo cual no puede ser cierto, porque una probabilidad no puede ser mayor a 1.
+
+\newpage
+
+\textbf{24.} If $p(w, h)$ is the probability density function of the weight and height of mothers discussed in Section 16.6, then the probability that a mother weighs $60$ kg and has a height of $170$ cm is $p(60, 170)$. \\
+
+La $p(60, 70)$ no puede ser la probabilidad, más bien (por la definición del Hughes Hallet) lo que está bien es que sea
+\[p(60, 170) \Delta w \Delta h\]
+
+\end{document}
