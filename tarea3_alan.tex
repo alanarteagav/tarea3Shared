@@ -1,0 +1,180 @@
+\documentclass{minimal}
+
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\newcommand*\Eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+\begin{document}
+
+Express the area of the given surface as an iterated double integral in polar coordinates, and then find the surface area.
+
+
+\textbf{Anton Bivens 14.4.7}\\
+
+7. The portion of the surface $z = xy$ that is above the sector in the first quadrant bounded by the lines $y = x / \sqrt 3$, $y = 0$, and the circle $x^2 + y^2=9$.
+
+    Usando coordenadas polares, se tiene:
+        $$ x = u \; cos v $$
+        $$ y = u \; sin v $$
+
+    luego, sustituyendo en la ecuación para la superficie $z = xy$, se tiene:
+        $$ z = xy = ( u \; cos v)(u \; sin v ) = u^2 \; sin v \; cos v $$
+    y por identidad trigonométrica, se sigue:
+        $$ z = u^2 \; sin v \; cos v = \frac{1}{2} u^2 \; sin(2v)$$
+
+    luego, de los valores para $x, y, z$ podemos deducir la ecuación vectorial:
+        $$ r = u \; cosv \; \hat{i} + u  \; sin v \; \hat{j} +
+               \frac{1}{2} u^2 \; sin(2v) \; \hat{k} $$
+
+    se tiene, que para hallar el área de la superficie R :
+        $$ S = \iint\limits_{R} \begin{Vmatrix} \frac{\partial r}{\partial u}
+              \times \frac{\partial r}{\partial v}\end{Vmatrix} dA $$
+
+    así, calculando las parciales:
+        $$ \frac{\partial r}{\partial u}
+                = cosv \; \hat{i} + sin v \; \hat{j} + u \; sin(2v) \; \hat{k}$$
+        $$ \frac{\partial r}{\partial v}
+                = - u \; sinv \; \hat{i} + u  \; cos v \; \hat{j} +
+                  u^2 \; cos(2v) \; \hat{k} $$
+
+    luego, procedemos a calcular el prducto cruz de las ecuaciones vectoriales
+    resultantes de las parciales, por lo cual se tiene:
+        $$ \frac{\partial r}{\partial u} \times \frac{\partial r}{\partial v} =
+            \begin{vmatrix}
+                \hat{i} & \hat{j} & \hat{k} \\
+                cosv & sin v & u \; sin(2v) \\
+                - u \; sinv & \; \; u \; cos v \; & \; \; u^2 \; cos(2v) \\
+            \end{vmatrix} $$
+        $$ = \hat{i}[u^2 \; sinv \; cos(2v) - u^2 \; cosv \; sin(2v)]
+           - \hat{j}[u^2 \; cosv \; cos(2v) + u^2 \; sinv \; sin(2v)]
+           + \hat{k}[u \; cosv \; cosv + u \; sinv \; sinv] $$
+        $$ = \hat{i}u^2 [sinv \; (1 - 2sin^2v) - \; cosv \; (2sinv \; cosv))]
+           - \hat{j} u^2 [cosv \; (2cos^2v - 1) + sinv \; (2sinv \; cosv)]
+           + \hat{k}[u (cos^2v + sin^2v)] $$
+        $$ = \hat{i}u^2 [sinv \; (1 - 2sin^2v) - \; 2sinv \; (cos^2v)]
+           - \hat{j}u^2 [cosv \; (2cos^2v - 1) + cosv (2sin^2v )]
+           + \hat{k}[u (cos^2v + sin^2v)] $$
+        $$ = \hat{i}u^2 [sinv \; (1 - 2sin^2v - 2cos^2v)]
+           - \hat{j}u^2 [cosv \; (2cos^2v - 1 + 2sin^2v)]
+           + \hat{k}[u (cos^2v + sin^2v)] $$
+        $$ = \hat{i}u^2 [sinv(1-1)]
+           - \hat{j}u^2 [cosv(1-1)]
+           + \hat{k}[u (cos^2v + sin^2v)] $$
+        $$ = u^2 \; sinv \hat{i}
+           - u^2 \; cosv \hat{j}
+           + u \hat{k} $$
+
+    luego, se sigue para calcular la norma del producto cruz:
+        $$ \begin{Vmatrix} \frac{\partial r}{\partial u}
+              \times \frac{\partial r}{\partial v}\end{Vmatrix}
+           = \sqrt{(- u^2 (sinv))^2 + (- u^2 (cosv))^2 + u^2}
+           = \sqrt{u^4 \; sin^2v + u^4  \; cos^2v + u^2}
+           = \sqrt{u^4 (sin^2v + cos^2v) + u^2} $$
+        $$ = \sqrt{u^4 + u^2} = u \sqrt{u^2 + 1}  $$
+
+    se tiene ahora, de las ecuaciones de las líneas y el círculo, podemos
+    determinar los límites de integración de tal modo que:
+        $$ y = u \; sin v $$
+
+    cuando el círculo corta a $ y = 0 $:
+        $$ u \; sin v = 0 $$
+        $$ sin v = \frac{0}{u} $$
+        $$ v = arcsin(0) = 0 $$
+
+    ahora, cuando el círculo corta a  $y = x / \sqrt 3$
+        $$ u \; sin v = \frac{x}{\sqrt 3}$$
+        $$ sin v = \frac{x}{\sqrt 3 u}
+           = \frac{ u \; cos v }{\sqrt 3 u}
+           = \frac{ cos v }{\sqrt 3} $$
+        $$ \frac{sinv}{cosv} = \frac{ 1 }{\sqrt 3} $$
+        $$ tanv = \frac{ 1 }{\sqrt 3} $$
+        $$ v = arctan \frac{ 1 }{\sqrt 3} = \frac{\pi}{6}$$
+    así, el intervalo para $v$ es tal que $ 0 \leq v \leq \frac{\pi}{6}$.\\
+
+    Ahora, para el intervalo de $u$, se tiene:
+        $$ x = u \; cos v $$
+        $$ u = \frac{x}{cosv} $$
+
+    de las ecuación del círculo, se sigue:
+        $$ u = \frac{\sqrt{9 - y^2}}{cosv} $$
+    de las ecuaciones de las rectas, cuando el círculo corta a $y = 0$:
+        $$ u = \frac{\sqrt{9}}{cosv} $$
+    y como se vió que cuando $y = 0, v = arcsin(0) = 0$, se sigue:
+        $$ u = \frac{\sqrt{9}}{cosv} = \frac{\sqrt{9}}{cos(0)}
+             = \frac{\sqrt{9}}{1} = \frac{3}{1} = 3 $$
+
+    ahora, cuando el área está delimitada por la intersección de $ y = 0$ y
+    $ y = x / \sqrt 3  $:
+        $$ 0 = \frac{x}{\sqrt 3} = \frac{u \; cos v}{\sqrt 3} $$
+        $$ 0 = u \; cos v $$
+        $$ u = \frac{0}{cosv} = 0$$
+    así, el intervalo para $u$ es tal que $ 0 \leq u \leq 3$.\\
+
+    Con los intervalos obtenidos, y la norma del producto cruz, podemos expresar
+    al área de la superficie dada mediante la integral:
+        $$ S = \iint\limits_{R} \begin{Vmatrix} \frac{\partial r}{\partial u}
+              \times \frac{\partial r}{\partial v}\end{Vmatrix} dA
+             = \int_{0}^{\pi / 6}\int_{0}^{3}  u \sqrt{u^2 + 1} du dv  $$
+
+    sea $z = u^2 + 1 $, y así $ \frac{dz}{2} = u du $, se sigue:
+        $$ S = \frac{1}{2}\int_{0}^{\pi / 6}\int_{z(0)}^{z(3)} \sqrt{z} dzdv
+             = \frac{1}{2}\int_{0}^{\pi / 6}
+               \frac{2(u^2 + 1)^{\frac{3}{2}}}{3} \Big|_0^3 dv
+             = \frac{2}{6} (u^2 + 1)^{\frac{3}{2}} \Big|_0^3
+               \int_{0}^{\pi / 6} dv
+             = \frac{2 \pi}{36} (u^2 + 1)^{\frac{3}{2}} \Big|_0^3 $$
+        $$   = \frac{\pi}{18} (u^2 + 1)^{\frac{3}{2}} \Big|_0^3
+             = \frac{\pi}{18} ((3^2 + 1)^\frac{3}{2} - (0^2 + 1)^\frac{3}{2})
+             = \frac{\pi}{18} ( 10^\frac{3}{2} - 1^\frac{3}{2})
+             = \frac{\pi}{18} ( \sqrt{1000} - 1 )
+             = \frac{\pi}{18} ( 10 \sqrt{10} - 1 ) $$
+
+
+\textbf{Anton Bivens 14.6.11}\\
+
+Use cylindrical coordinates to find the volume of the solid.
+
+The solid that is inside the surface $r^2 + z^2 = 20$ but not
+above the surface $z = r^2$ .
+
+De las regiones descritas, podemos obtener los intervalos de
+evaluación, de tal forma que para satisfacer ambos criterios, sustituimos la
+segunda ecuación en la primera, así:
+    $$ z + z^2 = 20 $$
+    $$ z^2 + z -20 = 0 $$
+hallando las raíces del polinomio, se sigue:
+    $$ (z + 5)(z - 4) = 20 $$
+de allí, se sigue que $z = \frac{20}{5} = 4$ o $ z = \frac{20}{-4} = -5 $, como
+$z$ es necesariamente positiva, se sigue $z = 4$, y como el sólido se considera
+sobre el plano $xy$, se sigue que el intervalo para $z$ es
+    $$ 0 \leq z \leq 4 $$
+
+luego, como el sólido está dentro de la superficie $ r^2 + z^2 = 20 $, se sigue
+que $r$ está limitado superiormente de tal forma que:
+    $$ r^2 + z^2 = 20 $$
+    $$ r = \pm \sqrt{ 20 - z^2 }$$
+y como el sólido está limitado inferiormente por $z = r^2$, se sigue para $r$:
+    $$ z = r^2  $$
+    $$ r = \pm \sqrt z $$
+considerando sólamente valores positivos para $r$, se tiene el intervalo:
+    $$ \sqrt z \leq r \leq \sqrt{ 20 - z^2 } $$
+
+por lo que, para la integral triple que ha de resultar en el cálculo del
+volumen del sólido, se tiene:
+    $$ V = \iiint\limits_{G} f(r,\theta,z) dV
+         = \int_0^{2\pi} \int_0^4 \int_{\sqrt z}^{\sqrt{20 - z^2}} r drdzd\theta
+         = \frac{1}{2} \int_0^{2\pi} \int_0^4
+            x^2 \Big|_{\sqrt z}^{\sqrt{20 - z^2}} \; dz d\theta $$
+    $$   = \frac{1}{2} \int_0^{2\pi} \int_0^4 (\sqrt{20 - z^2})^2 - (\sqrt z)^2
+            \; dz d\theta
+         = \frac{1}{2} \int_0^{2\pi} \int_0^4 20 - z^2 - z \; dz d\theta $$
+    $$   = \frac{1}{2} \int_0^{2\pi}
+            \Big[ 20 \int_0^4  dz - \int_0^4 z^2 dz - \int_0^4 z dz \Big]d\theta
+         = \frac{1}{2} \int_0^{2\pi}
+            \Big[ 20(4) - \frac{4^3}{3} - \frac{4^2}{2} \Big]d\theta $$
+    $$   = \frac{1}{2} \int_0^{2\pi}
+            \Big[ 20(4) - \frac{64}{3} - \frac{16}{2} \Big]d\theta
+         = \frac{1}{2} \int_0^{2\pi} \Big[ 80 - \frac{64}{3} - 8 \Big]d\theta
+         = \frac{1}{2} \int_0^{2\pi} \Big[\frac{240 - 64 - 24}{3} \Big]d\theta$$
+    $$   = \frac{1}{2} \cdot 2\pi \Big[\frac{152}{3}\Big] = \frac{152 \pi}{3} $$
+\end{document}
